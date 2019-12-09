@@ -1,23 +1,23 @@
 package com.f19.vulcansalute_768425_fp.src;
 
 public class Tester extends Employee {
-    private int numBugs;
+    private int nbBugs;
 
     public Tester(String name, int birthYear, int age, double mIncome, double oRate, Vehicle vehicle) {
         super(name, birthYear, age, mIncome, oRate, vehicle);
-        numBugs = 0;
+        nbBugs = 0;
     }
 
     public Tester(String name, int birthYear, int age, double mIncome, double oRate, Vehicle vehicle, int numBugs) {
         super(name, birthYear, age, mIncome, oRate, vehicle);
-        this.numBugs = numBugs;
+        this.nbBugs = numBugs;
     }
 
     public int getNumBugs() {
-        return numBugs;
+        return nbBugs;
     }
 
     public void setNumBugs(int numBugs) {
-        this.numBugs = numBugs;
+        this.nbBugs = numBugs;
     }
 }
