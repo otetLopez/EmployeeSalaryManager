@@ -16,13 +16,24 @@ public class Employee {
     private double oRate;
     private Vehicle vehicle;
 
-    public Employee(String name, int birthYear, int age, double mIncome, double oRate, Vehicle vehicle) {
+    public Employee(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
         this.name = name;
         this.birthYear = birthYear;
-        this.age = age;
         this.mIncome = mIncome;
-        this.oRate = validateRate(oRate);
+        this.oRate = oRate;
         this.vehicle = vehicle;
+
+        this.age = Constants.CURRENT_YEAR - birthYear;
+    }
+
+    public Employee(String name, int birthYear, double mIncome, double oRate) {
+        this.name = name;
+        this.birthYear = birthYear;
+        this.mIncome = mIncome;
+        this.oRate = oRate;
+
+        this.age = Constants.CURRENT_YEAR - birthYear;
+        this.vehicle = null;
     }
 
     /** Each employee has a base yearly income computed as 12 times the monthly

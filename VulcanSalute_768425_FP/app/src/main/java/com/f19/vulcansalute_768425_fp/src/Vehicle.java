@@ -24,7 +24,7 @@ public class Vehicle {
     public String toString() {
         return "\t\t\t - make: " + this.getMake() + "\n" +
                 "\t\t\t - plate: " + this.getPlate() + "\n" +
-                "\t\t\t - color: " + this.getColor() + "\n";
+                "\t\t\t - color: " + this.getColor();
     }
 
     public String getMake() {

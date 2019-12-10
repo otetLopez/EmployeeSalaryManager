@@ -2,16 +2,28 @@ package com.f19.vulcansalute_768425_fp.src;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 
+import androidx.annotation.NonNull;
+
 public class Programmer extends Employee {
     private int nbProjects;
 
-    public Programmer(String name, int birthYear, int age, double mIncome, double oRate, Vehicle vehicle, int numProjects) {
-        super(name, birthYear, age, mIncome, oRate, vehicle);
-        this.nbProjects = numProjects;
+    public Programmer(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbProjects) {
+        super(name, birthYear, mIncome, oRate, vehicle);
+        this.nbProjects = nbProjects;
     }
 
-    public Programmer(String name, int birthYear, int age, double mIncome, double oRate, Vehicle vehicle) {
-        super(name, birthYear, age, mIncome, oRate, vehicle);
+    public Programmer(String name, int birthYear, double mIncome, double oRate, int nbProjects) {
+        super(name, birthYear, mIncome, oRate);
+        this.nbProjects = nbProjects;
+    }
+
+    public Programmer(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
+        super(name, birthYear, mIncome, oRate, vehicle);
+        this.nbProjects = 0;
+    }
+
+    public Programmer(String name, int birthYear, double mIncome, double oRate) {
+        super(name, birthYear, mIncome, oRate);
         this.nbProjects = 0;
     }
 
@@ -20,6 +32,17 @@ public class Programmer extends Employee {
     public double annualIncome() {
         return (this.getmIncome() * Constants.PAID_MONTHS_IN_A_YEAR * (this.getoRate() * Constants.PERCENTAGE)) +
                 (nbProjects * Constants.GAIN_FACTOR_PROJECT);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Name: " + this.getName() + ", a Programmer\n" +
+                "Age: " + this.getAge() + "\n" +
+                (getVehicle() != null ? (this.getVehicle().toString() + "\n") : "" ) +
+                "Occupation Rate: " + this.getoRate() + "%\n" +
+                "Annual Income: $" + String.format("%.2f", this.annualIncome()) + "\n" +
+                "He/She has completed " + this.nbProjects + " projects.";
     }
 
     public int getNumProjects() {
