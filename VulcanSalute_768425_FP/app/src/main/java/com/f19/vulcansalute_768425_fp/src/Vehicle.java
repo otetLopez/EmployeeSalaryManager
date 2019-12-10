@@ -22,9 +22,9 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "\t\t\t - make: " + this.getMake() + "\n" +
-                "\t\t\t - plate: " + this.getPlate() + "\n" +
-                "\t\t\t - color: " + this.getColor();
+        return  "\t\t - make: " + this.getMake() + "\n" +
+                "\t\t - plate: " + this.getPlate() + "\n" +
+                "\t\t - color: " + this.getColor();
     }
 
     public String getMake() {

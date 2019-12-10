@@ -14,10 +14,10 @@ public class Motorcycle extends Vehicle {
     @Override
     public String toString() {
         return  "Employee has a motorcycle \n" +
-                "\t\t\t - make: " + this.getMake() + "\n" +
-                "\t\t\t - plate: " + this.getPlate() + "\n" +
-                "\t\t\t - color: " + this.getColor() + "\n" +
-                "\t\t\t - " + (isSideCar ? "with sidecar" : "without sidecar") + "\n";
+                "\t\t - make: " + this.getMake() + "\n" +
+                "\t\t - plate: " + this.getPlate() + "\n" +
+                "\t\t - color: " + this.getColor() + "\n" +
+                "\t\t - " + (isSideCar ? "with sidecar" : "without sidecar");
     }
 
     public boolean isSideCar() {

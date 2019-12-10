@@ -43,7 +43,7 @@ public class Tester extends Employee {
                 "Age: " + this.getAge() + "\n" +
                 (getVehicle() != null ? (this.getVehicle().toString() + "\n") : "" ) +
                 "Occupation Rate: " + this.getoRate() + "%\n" +
-                "Annual Income: $" + String.format("%.2f", this.annualIncome()) + "\n" +
+                "Annual Income: $ " + String.format("%.2f", this.annualIncome()) + "\n" +
                 "He/She has corrected " + this.nbBugs + " bugs.";
     }
 

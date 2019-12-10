@@ -25,7 +25,7 @@ public class Simulator {
         // 33976.00 : (33976.00 - (124 * 10)) / 12 / .50
         Tester pierre = new Tester("Pierre", 1987, 5456, 50, v4, 124);
 
-        Log.i("simulate project", "Employees description:\n-------------------------\n" +
+        Log.i("simulate project", "\nEmployees description:\n-------------------------\n" +
                 serge.toString() + "\n-------------------------\n-------------------------\n" +
                 cindy.toString() + "\n-------------------------\n-------------------------\n" +
                 paul.toString() + "\n-------------------------\n-------------------------\n" +
