@@ -1,5 +1,7 @@
 package com.f19.vulcansalute_768425_fp.src;
 
+import com.f19.vulcansalute_768425_fp.constants.Constants;
+
 public class Tester extends Employee {
     private int nbBugs;
 
@@ -13,6 +15,14 @@ public class Tester extends Employee {
         this.nbBugs = numBugs;
     }
 
+    /** For a tester, a bonus of 10 dollars per corrected bug is added (a constant can be used
+     like GAIN_FACTOR_ERROR equals 10) */
+    @Override
+    public double annualIncome() {
+        return (this.getmIncome() * Constants.PAID_MONTHS_IN_A_YEAR * (this.getoRate() * Constants.PERCENTAGE)) +
+                (nbBugs * Constants.GAIN_FACTOR_ERROR);
+    }
+
     public int getNumBugs() {
         return nbBugs;
     }
@@ -20,4 +30,6 @@ public class Tester extends Employee {
     public void setNumBugs(int numBugs) {
         this.nbBugs = numBugs;
     }
+
+
 }
