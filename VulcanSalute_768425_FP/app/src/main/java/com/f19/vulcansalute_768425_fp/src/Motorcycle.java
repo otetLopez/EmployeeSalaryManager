@@ -5,21 +5,16 @@ import androidx.annotation.NonNull;
 public class Motorcycle extends Vehicle {
     private boolean isSideCar;
 
-    public Motorcycle(String make, String plate, String color, String category, boolean isSideCar) {
-        super(make, plate, color, category);
+    public Motorcycle(String make, String plate, String color, boolean isSideCar) {
+        super(make, plate, color);
         this.isSideCar = isSideCar;
-    }
-
-    public Motorcycle(String make, String plate, String color, String category) {
-        super(make, plate, color, category);
     }
 
     @NonNull
     @Override
     public String toString() {
-
-
-        return "\t\t\t - make: " + this.getMake() + "\n" +
+        return  "Employee has a motorcycle \n" +
+                "\t\t\t - make: " + this.getMake() + "\n" +
                 "\t\t\t - plate: " + this.getPlate() + "\n" +
                 "\t\t\t - color: " + this.getColor() + "\n" +
                 "\t\t\t - " + (isSideCar ? "with sidecar" : "without sidecar") + "\n";
