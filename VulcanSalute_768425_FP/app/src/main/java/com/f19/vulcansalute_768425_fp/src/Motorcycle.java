@@ -1,5 +1,7 @@
 package com.f19.vulcansalute_768425_fp.src;
 
+import androidx.annotation.NonNull;
+
 public class Motorcycle extends Vehicle {
     private boolean isSideCar;
 
@@ -10,6 +12,17 @@ public class Motorcycle extends Vehicle {
 
     public Motorcycle(String make, String plate, String color, String category) {
         super(make, plate, color, category);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+
+
+        return "\t\t\t - make: " + this.getMake() + "\n" +
+                "\t\t\t - plate: " + this.getPlate() + "\n" +
+                "\t\t\t - color: " + this.getColor() + "\n" +
+                "\t\t\t - " + (isSideCar ? "with sidecar" : "without sidecar") + "\n";
     }
 
     public boolean isSideCar() {
