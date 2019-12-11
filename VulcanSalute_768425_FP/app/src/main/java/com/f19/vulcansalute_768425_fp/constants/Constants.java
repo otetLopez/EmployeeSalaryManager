@@ -10,6 +10,10 @@ public class Constants {
     public static final int CURRENT_YEAR = 2019;
 
     public static final String[] EmployeeType = {"Choose a type", "Manager", "Tester", "Programmer"};
+    public static final String[] GainFactor = {"# clients", "# bugs", "# projects"};
+    public static final int EMPLOYMENT_CODE_MANAGER = 1;
+    public static final int EMPLOYMENT_CODE_TESTER = 2;
+    public static final int EMPLOYMENT_CODE_PROGRAMMER = 3;
 
     /** Intent Codes */
     public static final int INTENT_REQUEST_CODE_ADD_OK = 1;
