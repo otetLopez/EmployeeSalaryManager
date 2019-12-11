@@ -4,9 +4,13 @@ public class Constants {
 
     public static final boolean ENABLE_DEBUG = true;
 
+    /** Other constants */
     public static final int PAID_MONTHS_IN_A_YEAR = 12;
     public static final double PERCENTAGE = 0.01;
     public static final int CURRENT_YEAR = 2019;
+
+    /** Intent Codes */
+    public static final int INTENT_REQUEST_CODE_ADD_OK = 1;
 
     /** Income Bonuses */
     public static final int GAIN_FACTOR_ERROR = 10;
