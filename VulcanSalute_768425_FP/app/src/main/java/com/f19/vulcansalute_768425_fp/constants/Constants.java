@@ -9,6 +9,8 @@ public class Constants {
     public static final double PERCENTAGE = 0.01;
     public static final int CURRENT_YEAR = 2019;
 
+    public static final String[] EmployeeType = {"Choose a type", "Manager", "Tester", "Programmer"};
+
     /** Intent Codes */
     public static final int INTENT_REQUEST_CODE_ADD_OK = 1;
 
