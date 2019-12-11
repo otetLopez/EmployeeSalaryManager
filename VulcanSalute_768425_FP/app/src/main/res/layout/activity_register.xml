@@ -5,7 +5,149 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="30dp"
     tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registration Form"
+        android:layout_gravity="center" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Employee First Name" />
+            <EditText
+                android:id="@+id/edittxt_fname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" first name"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="20dp"
+                android:text="Employee Last Name" />
+            <EditText
+                android:id="@+id/edittxt_lname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" last name"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="20dp"
+                android:text="Employee Birth Year" />
+            <EditText
+                android:id="@+id/edittxt_byear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" birth year"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="20dp"
+                android:text="Employee ID" />
+            <EditText
+                android:id="@+id/edittxt_eid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" employee id"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="20dp"
+                android:text="Employee Type" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:autofillHints="Choose a type"
+                android:background="#d3d3d3"
+                android:layout_weight="1"
+                android:entries="@array/employee_type"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/tbrow_nb"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/txtview_nb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="20dp"/>
+            <EditText
+                android:id="@+id/edittxt_nb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" number"
+                android:textSize="13sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:layout_marginRight="20dp"
+                android:text="Vehicle" />
+
+            <RadioGroup
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Motorcycle"/>
+            </RadioGroup>
+        </TableRow>
+    </TableLayout>
+
+
 
 </LinearLayout>
