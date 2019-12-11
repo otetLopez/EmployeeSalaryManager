@@ -5,33 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     tools:context=".RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registration Form"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_gravity="center" />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1">
         <TableRow
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="27dp"
                 android:layout_marginRight="20dp"
                 android:textSize="15sp"
                 android:text="Employee First Name" />
             <EditText
                 android:id="@+id/edittxt_fname"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="27dp"
                 android:hint=" first name"
                 android:textSize="15sp"
                 android:layout_weight="1"
@@ -41,14 +44,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee Last Name" />
             <EditText
                 android:id="@+id/edittxt_lname"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" last name"
                 android:textSize="15sp"
                 android:layout_weight="1"
@@ -58,14 +61,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee Birth Year" />
             <EditText
                 android:id="@+id/edittxt_byear"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" birth year"
                 android:inputType="number"
                 android:textSize="15sp"
@@ -76,14 +79,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Monthly Salary" />
             <EditText
                 android:id="@+id/edittxt_msalary"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" monthly salary"
                 android:inputType="number"
                 android:textSize="15sp"
@@ -94,14 +97,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Occupation Rate" />
             <EditText
                 android:id="@+id/edittxt_orate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" occupation rate"
                 android:inputType="number"
                 android:textSize="15sp"
@@ -112,14 +115,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee ID" />
             <EditText
                 android:id="@+id/edittxt_eid"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" employee id"
                 android:textSize="15sp"
                 android:layout_weight="1"
@@ -129,7 +132,7 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee Type" />
@@ -137,7 +140,7 @@
             <Spinner
                 android:id="@+id/spinner_etype"
                 android:layout_width="match_parent"
-                android:layout_height="18dp"
+                android:layout_height="27dp"
                 android:autofillHints="Choose a type"
                 android:background="#d3d3d3"
                 android:layout_weight="1"
@@ -149,13 +152,13 @@
             <TextView
                 android:id="@+id/txtview_nb"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"/>
             <EditText
                 android:id="@+id/edittxt_nb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" number"
                 android:inputType="number"
                 android:textSize="15sp"
@@ -166,15 +169,15 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Vehicle" />
 
             <RadioGroup
                 android:id="@+id/radiogrp_vtype"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:layout_width="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <RadioButton
@@ -196,14 +199,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Car Type" />
             <EditText
                 android:id="@+id/edittxt_ctype"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" car type"
                 android:textSize="15sp"
                 android:layout_weight="1"
@@ -214,14 +217,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Side Car" />
 
             <RadioGroup
                 android:id="@+id/radiogrp_scar"
-                android:layout_height="match_parent"
+                android:layout_height="27dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1">
@@ -243,14 +246,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Vehicle Model" />
             <EditText
                 android:id="@+id/edittxt_vmodel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" vehicle model"
                 android:textSize="15sp"
                 android:layout_weight="1"
@@ -260,14 +263,14 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Plate Number" />
             <EditText
                 android:id="@+id/edittxt_pnumber"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:hint=" plate number"
                 android:textSize="15sp"
                 android:layout_weight="1"
@@ -277,7 +280,7 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="27dp"
                 android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Vehicle Color" />
@@ -285,7 +288,7 @@
             <Spinner
                 android:id="@+id/spinner_vcolor"
                 android:layout_width="match_parent"
-                android:layout_height="18dp"
+                android:layout_height="27dp"
                 android:autofillHints="Choose a type"
                 android:background="#d3d3d3"
                 android:layout_weight="1"
