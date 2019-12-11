@@ -5,34 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="20dp"
     tools:context=".RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registration Form"
+        android:textSize="20sp"
         android:layout_gravity="center" />
-
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_weight="1">
-
-        <TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_marginRight="20dp"
+                android:textSize="15sp"
                 android:text="Employee First Name" />
             <EditText
                 android:id="@+id/edittxt_fname"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:hint=" first name"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:background="#d3d3d3" />
         </TableRow>
@@ -41,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee Last Name" />
             <EditText
@@ -49,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint=" last name"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:background="#d3d3d3" />
         </TableRow>
@@ -58,7 +59,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee Birth Year" />
             <EditText
@@ -66,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint=" birth year"
-                android:textSize="13sp"
+                android:inputType="number"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:background="#d3d3d3" />
         </TableRow>
@@ -75,7 +77,43 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Monthly Salary" />
+            <EditText
+                android:id="@+id/edittxt_msalary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" monthly salary"
+                android:inputType="number"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Occupation Rate" />
+            <EditText
+                android:id="@+id/edittxt_orate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" occupation rate"
+                android:inputType="number"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee ID" />
             <EditText
@@ -83,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint=" employee id"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:background="#d3d3d3" />
         </TableRow>
@@ -92,7 +130,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Employee Type" />
 
@@ -112,14 +150,15 @@
                 android:id="@+id/txtview_nb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_marginRight="20dp"/>
             <EditText
                 android:id="@+id/edittxt_nb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint=" number"
-                android:textSize="13sp"
+                android:inputType="number"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:background="#d3d3d3" />
         </TableRow>
@@ -128,11 +167,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:layout_marginRight="20dp"
                 android:text="Vehicle" />
 
             <RadioGroup
+                android:id="@+id/radiogrp_vtype"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
@@ -140,15 +180,123 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15dp"
                     android:text="Car"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15dp"
                     android:text="Motorcycle"/>
             </RadioGroup>
         </TableRow>
-    </TableLayout>
+        <TableRow
+            android:id="@+id/tbrow_cartype"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Car Type" />
+            <EditText
+                android:id="@+id/edittxt_ctype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" car type"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tbrow_sidecar"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Side Car" />
 
+            <RadioGroup
+                android:id="@+id/radiogrp_scar"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15dp"
+                    android:text="Yes"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15dp"
+                    android:text="No"/>
+            </RadioGroup>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Vehicle Model" />
+            <EditText
+                android:id="@+id/edittxt_vmodel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" vehicle model"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Plate Number" />
+            <EditText
+                android:id="@+id/edittxt_pnumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" plate number"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:background="#d3d3d3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:text="Vehicle Color" />
+
+            <Spinner
+                android:id="@+id/spinner_vcolor"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:autofillHints="Choose a type"
+                android:background="#d3d3d3"
+                android:layout_weight="1"
+                android:entries="@array/colors"/>
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/btn_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"/>
 
 
 </LinearLayout>
