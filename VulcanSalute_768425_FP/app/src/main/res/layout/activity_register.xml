@@ -97,6 +97,7 @@
                 android:text="Employee Type" />
 
             <Spinner
+                android:id="@+id/spinner_etype"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
                 android:autofillHints="Choose a type"
