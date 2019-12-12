@@ -30,7 +30,7 @@ public class Employee {
         this.name = name;
         this.birthYear = birthYear;
         this.mIncome = mIncome;
-        this.oRate = oRate;
+        this.oRate = validateRate(oRate);
 
         this.age = Constants.CURRENT_YEAR - birthYear;
         this.vehicle = null;
