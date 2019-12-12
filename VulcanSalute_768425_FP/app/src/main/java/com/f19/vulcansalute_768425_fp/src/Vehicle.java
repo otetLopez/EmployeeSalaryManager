@@ -1,6 +1,6 @@
 package com.f19.vulcansalute_768425_fp.src;
 
-public class Vehicle {
+public class Vehicle implements java.io.Serializable {
     private String make;
     private String plate;
     private String color;
