@@ -11,6 +11,8 @@ public class Constants {
 
     public static final String[] EmployeeType = {"Choose a type", "Manager", "Tester", "Programmer"};
     public static final String[] GainFactor = {"# clients", "# bugs", "# projects"};
+    public static final String[] Colors = {"Red", "Blue", "Yellow", "Green", "Orange", "Purple", "Pink", "Brown", "White", "Black", "Beige"};
+
 
     public static final int FIELD_NOT_SET = -1;
     public static final boolean BOOLEAN_FIELD_NOT_SET = false;
