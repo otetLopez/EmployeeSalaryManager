@@ -7,13 +7,8 @@ import androidx.annotation.NonNull;
 public class Programmer extends Employee implements java.io.Serializable{
     private int nbProjects;
 
-    public Programmer(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbProjects) {
-        super(fname, lname, birthYear, mIncome, oRate, vehicle);
-        this.nbProjects = nbProjects;
-    }
-
-    public Programmer(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int eType, int nbProjects) {
-        super(fname, lname, birthYear, mIncome, oRate, vehicle, eType);
+    public Programmer(String fname, String lname, String id, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbProjects) {
+        super(fname, lname, id, birthYear, mIncome, oRate, vehicle);
         this.nbProjects = nbProjects;
     }
 
@@ -28,6 +23,7 @@ public class Programmer extends Employee implements java.io.Serializable{
     @Override
     public String toString() {
         return "Name: " + this.getFname() + " " + this.getLname() + ", a Programmer\n" +
+                "Id number: " + this.getId() + "\n" +
                 "Age: " + this.getAge() + "\n" +
                 (getVehicle() != null ? (this.getVehicle().toString() + "\n") : "" ) +
                 "Occupation Rate: " + this.getoRate() + "%\n" +

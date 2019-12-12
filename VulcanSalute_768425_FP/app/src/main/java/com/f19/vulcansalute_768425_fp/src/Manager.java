@@ -6,16 +6,16 @@ public class Manager extends Employee implements  java.io.Serializable{
     private int nbClients;
     private int nbTravelDays;
 
-    public Manager(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbClients) {
-        super(fname, lname, birthYear, mIncome, oRate, vehicle);
+    public Manager(String fname, String lname, String id, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbClients) {
+        super(fname, lname, id, birthYear, mIncome, oRate, vehicle);
         this.nbClients = nbClients;
         this.nbTravelDays = 0;
     }
 
-    public Manager(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int eType, int nbClients) {
-        super(fname, lname, birthYear, mIncome, oRate, vehicle, eType);
+    public Manager(String fname, String lname, String id, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbClients, int nbTravelDays) {
+        super(fname, lname, id, birthYear, mIncome, oRate, vehicle);
         this.nbClients = nbClients;
-        nbTravelDays = 0;
+        this.nbTravelDays = nbTravelDays;
     }
 
     /** For a manager a bonus of 500 dollars per client brought to the company is added as well
@@ -31,6 +31,7 @@ public class Manager extends Employee implements  java.io.Serializable{
     @Override
     public String toString() {
         return  "Name: " + this.getFname() + " " + this.getLname() + ", a Manager\n" +
+                "Id number: " + this.getId() + "\n" +
                 "Age: " + this.getAge() + "\n" +
                 (getVehicle() != null ? (this.getVehicle().toString() + "\n") : "" ) +
                 "Occupation Rate: " + this.getoRate() + "%\n" +

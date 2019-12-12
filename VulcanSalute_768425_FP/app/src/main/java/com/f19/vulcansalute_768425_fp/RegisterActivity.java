@@ -153,9 +153,9 @@ public class RegisterActivity extends AppCompatActivity {
                         case Constants.EMPLOYMENT_CODE_MANAGER:
                         {
                             Manager manager = new Manager(fnametxt.getText().toString(), lnametxt.getText().toString(),
-                                    Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
-                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()),
-                                    employeeType);
+                                    idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
+                                    Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
+                                    v, Integer.valueOf(nbtxt.getText().toString()));
                             returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_MANAGER);
                             returnIntent.putExtra("newEmployee", manager);
                             setResult(MainActivity.RESULT_OK,returnIntent);
@@ -165,9 +165,9 @@ public class RegisterActivity extends AppCompatActivity {
                         case Constants.EMPLOYMENT_CODE_TESTER:
                         {
                             Tester tester = new Tester(fnametxt.getText().toString(), lnametxt.getText().toString(),
-                                    Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
-                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()),
-                                    employeeType);
+                                    idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
+                                    Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
+                                    v, Integer.valueOf(nbtxt.getText().toString()));
                             returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_TESTER);
                             returnIntent.putExtra("newEmployee", tester);
                             setResult(MainActivity.RESULT_OK,returnIntent);
@@ -177,9 +177,9 @@ public class RegisterActivity extends AppCompatActivity {
                         case Constants.EMPLOYMENT_CODE_PROGRAMMER:
                         {
                             Programmer programmer = new Programmer(fnametxt.getText().toString(), lnametxt.getText().toString(),
-                                    Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
-                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()),
-                                    employeeType);
+                                    idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
+                                    Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
+                                    v, Integer.valueOf(nbtxt.getText().toString()));
                             returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_PROGRAMMER);
                             returnIntent.putExtra("newEmployee", programmer);
                             setResult(MainActivity.RESULT_OK,returnIntent);

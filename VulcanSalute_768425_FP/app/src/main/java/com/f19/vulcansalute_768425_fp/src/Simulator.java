@@ -17,13 +17,13 @@ public class Simulator {
 
 
         // 104472.00 : (104472.00 - (30 * 500)) / 12
-        Manager serge = new Manager("Serge", "E", 1985, 7456.0, 100, v1, 30);
+        Manager serge = new Manager("Serge", "E","e1", 1985, 7456.0, 100, v1, 30);
         // 89104.00 : (89104.00 - (20 * 500)) / 12 / .8
-        Manager cindy = new Manager("Cindy", "E",1974, 8240, 80, v2, 20);
+        Manager cindy = new Manager("Cindy", "E", "e2", 1974, 8240, 80, v2, 20);
         // 58704.00 : (58704.00 - (3 * 200) / 12 / .75 )
-        Programmer paul = new Programmer("Paul", "Z", 1993, 6456, 75, v3, 3);
+        Programmer paul = new Programmer("Paul", "Z", "e3",1993, 6456, 75, v3, 3);
         // 33976.00 : (33976.00 - (124 * 10)) / 12 / .50
-        Tester pierre = new Tester("Pierre", "D", 1987, 5456, 50, v4, 124);
+        Tester pierre = new Tester("Pierre", "D", "e4",1987, 5456, 50, v4, 124);
 
         Log.i("simulate project", "\nEmployees description:\n-------------------------\n" +
                 serge.toString() + "\n-------------------------\n-------------------------\n" +

@@ -11,32 +11,23 @@ import com.f19.vulcansalute_768425_fp.constants.Constants;
 public class Employee implements java.io.Serializable{
     private String fname;
     private String lname;
+    private String id;
+
     private int birthYear;
     private int age;
     private double mIncome;
     private double oRate;
     private Vehicle vehicle;
-    private int eType;
+    //private int eType;
 
-    public Employee(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
+    public Employee(String fname, String lname, String id, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
         this.fname = fname;
         this.lname = lname;
+        this.id = id;
         this.birthYear = birthYear;
         this.mIncome = mIncome;
         this.oRate = validateRate(oRate);
         this.vehicle = vehicle;
-
-        this.age = Constants.CURRENT_YEAR - birthYear;
-    }
-
-    public Employee(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int eType) {
-        this.fname = fname;
-        this.lname = lname;
-        this.birthYear = birthYear;
-        this.mIncome = mIncome;
-        this.oRate = validateRate(oRate);
-        this.vehicle = vehicle;
-        this.eType = eType;
 
         this.age = Constants.CURRENT_YEAR - birthYear;
     }
@@ -103,12 +94,12 @@ public class Employee implements java.io.Serializable{
         this.vehicle = vehicle;
     }
 
-    public int geteType() {
-        return eType;
+    public String getId() {
+        return id;
     }
 
-    public void seteType(int eType) {
-        this.eType = eType;
+    public void setId(String id) {
+        this.id = id;
     }
 
     private double validateRate(double oRate) {
