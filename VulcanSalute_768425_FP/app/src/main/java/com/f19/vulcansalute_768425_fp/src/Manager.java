@@ -2,7 +2,7 @@ package com.f19.vulcansalute_768425_fp.src;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 
-public class Manager extends Employee {
+public class Manager extends Employee implements  java.io.Serializable{
     private int nbClients;
     private int nbTravelDays;
 
@@ -10,6 +10,12 @@ public class Manager extends Employee {
         super(fname, lname, birthYear, mIncome, oRate, vehicle);
         this.nbClients = nbClients;
         this.nbTravelDays = 0;
+    }
+
+    public Manager(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int eType, int nbClients) {
+        super(fname, lname, birthYear, mIncome, oRate, vehicle, eType);
+        this.nbClients = nbClients;
+        nbTravelDays = 0;
     }
 
     /** For a manager a bonus of 500 dollars per client brought to the company is added as well

@@ -4,11 +4,16 @@ import com.f19.vulcansalute_768425_fp.constants.Constants;
 
 import androidx.annotation.NonNull;
 
-public class Programmer extends Employee {
+public class Programmer extends Employee implements java.io.Serializable{
     private int nbProjects;
 
     public Programmer(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbProjects) {
         super(fname, lname, birthYear, mIncome, oRate, vehicle);
+        this.nbProjects = nbProjects;
+    }
+
+    public Programmer(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int eType, int nbProjects) {
+        super(fname, lname, birthYear, mIncome, oRate, vehicle, eType);
         this.nbProjects = nbProjects;
     }
 

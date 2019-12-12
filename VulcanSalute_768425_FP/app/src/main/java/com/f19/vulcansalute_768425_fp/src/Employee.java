@@ -8,7 +8,7 @@ import com.f19.vulcansalute_768425_fp.constants.Constants;
  and an occupation rate (the percentage of time worked monthly; for example, 80%) and an
  employee Id. The employee has also a vehicle */
 
-public class Employee {
+public class Employee implements java.io.Serializable{
     private String fname;
     private String lname;
     private int birthYear;
@@ -16,19 +16,30 @@ public class Employee {
     private double mIncome;
     private double oRate;
     private Vehicle vehicle;
+    private int eType;
 
     public Employee(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
         this.fname = fname;
         this.lname = lname;
         this.birthYear = birthYear;
         this.mIncome = mIncome;
-        this.oRate = oRate;
+        this.oRate = validateRate(oRate);
         this.vehicle = vehicle;
 
         this.age = Constants.CURRENT_YEAR - birthYear;
     }
 
+    public Employee(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int eType) {
+        this.fname = fname;
+        this.lname = lname;
+        this.birthYear = birthYear;
+        this.mIncome = mIncome;
+        this.oRate = validateRate(oRate);
+        this.vehicle = vehicle;
+        this.eType = eType;
 
+        this.age = Constants.CURRENT_YEAR - birthYear;
+    }
 
     /** Each employee has a base yearly income computed as 12 times the monthly
      income multiplied by the occupation rate. */
@@ -90,6 +101,14 @@ public class Employee {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public int geteType() {
+        return eType;
+    }
+
+    public void seteType(int eType) {
+        this.eType = eType;
     }
 
     private double validateRate(double oRate) {
