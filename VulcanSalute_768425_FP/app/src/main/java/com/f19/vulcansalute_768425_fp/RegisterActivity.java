@@ -2,6 +2,7 @@ package com.f19.vulcansalute_768425_fp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -146,38 +147,48 @@ public class RegisterActivity extends AppCompatActivity {
                             new Car(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], ctypetxt.getText().toString()) :
                             new Motorcycle(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], sidecar);
 
-                    Employee employee = null;
+                    //Employee employee = null;
+                    Intent returnIntent = new Intent();
                     switch (employeeType) {
                         case Constants.EMPLOYMENT_CODE_MANAGER:
                         {
-                            //Manager manager
-                            employee = new Manager(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                            Manager manager = new Manager(fnametxt.getText().toString(), lnametxt.getText().toString(),
                                     Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
-                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()));
+                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()),
+                                    employeeType);
+                            returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_MANAGER);
+                            returnIntent.putExtra("newEmployee", manager);
+                            setResult(MainActivity.RESULT_OK,returnIntent);
+                            finish();
                         }
                         break;
                         case Constants.EMPLOYMENT_CODE_TESTER:
                         {
-                            //Tester tester
-                            employee = new Tester(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                            Tester tester = new Tester(fnametxt.getText().toString(), lnametxt.getText().toString(),
                                     Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
-                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()));
+                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()),
+                                    employeeType);
+                            returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_TESTER);
+                            returnIntent.putExtra("newEmployee", tester);
+                            setResult(MainActivity.RESULT_OK,returnIntent);
+                            finish();
                         }
                         break;
                         case Constants.EMPLOYMENT_CODE_PROGRAMMER:
                         {
-                            //Programmer programmer
-                            employee= new Programmer(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                            Programmer programmer = new Programmer(fnametxt.getText().toString(), lnametxt.getText().toString(),
                                     Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
-                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()));
+                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()),
+                                    employeeType);
+                            returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_PROGRAMMER);
+                            returnIntent.putExtra("newEmployee", programmer);
+                            setResult(MainActivity.RESULT_OK,returnIntent);
+                            finish();
                         }
                         break;
                         default:
                             Toast.makeText(RegisterActivity.this, "ERROR: Employee record not created.  Employment type invalid.", Toast.LENGTH_SHORT).show();
                             break;
-                    }
-                    if(employee != null) {
-
                     }
                 }
             }
