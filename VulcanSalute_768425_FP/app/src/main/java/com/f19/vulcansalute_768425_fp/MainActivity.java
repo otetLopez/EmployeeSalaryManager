@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,7 +14,10 @@ import android.widget.ListView;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 import com.f19.vulcansalute_768425_fp.src.Employee;
+import com.f19.vulcansalute_768425_fp.src.Manager;
+import com.f19.vulcansalute_768425_fp.src.Programmer;
 import com.f19.vulcansalute_768425_fp.src.Simulator;
+import com.f19.vulcansalute_768425_fp.src.Tester;
 
 import java.util.ArrayList;
 
@@ -32,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
             simulator.run();
         }
 
-//        ListView listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//            }
-//        });
+        ListView listview = findViewById(R.id.list_names);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
         Button btn = findViewById(R.id.btn_add);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +58,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == Constants.INTENT_REQUEST_CODE_ADD_OK) {
+            if(resultCode == RESULT_OK) {
+//                int employeeType = (Integer) data.getExtras().getInt("employeeType");
+//                switch (employeeType) {
+//                    case Constants.EMPLOYMENT_CODE_MANAGER:
+//                    {
+//                        Manager manager = (Manager) data.getExtras().get("newEmployee");
+//                        Log.i("received", manager.toString());
+//                        employees.add(manager);
+//                    }
+//                    break;
+//                    case Constants.EMPLOYMENT_CODE_TESTER:
+//                    {
+//                        Tester tester = (Tester) data.getExtras().get("newEmployee");
+//                        Log.i("received", tester.toString());
+//                        employees.add(tester);
+//                    }
+//                    break;
+//                    case Constants.EMPLOYMENT_CODE_PROGRAMMER:
+//                    {
+//                        Programmer programer = (Programmer) data.getExtras().get("newEmployee");
+//                        Log.i("received", programer.toString());
+//                        employees.add(programer);
+//                    }
+//                    break;
+//                    default:
+//                        break;
+//                }
+                employees.add((Employee) data.getExtras().get("newEmployee"));
+            }
 
         }
-//        ArrayList<String> names = new ArrayList<>();
-//        for(int i=0; i<persons.size(); ++i) {
-//            names.add(persons.get(i).getFname() + " " + persons.get(i).getLname());
-//        }
-
+        ArrayList<String> names = new ArrayList<>();
+        Log.i("received", "Total employees size: " + employees.size());
+        for(int i=0; i<employees.size(); ++i) {
+            names.add(employees.get(i).getFname() + " " + employees.get(i).getLname());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
+        ListView listview  = findViewById(R.id.list_names);
+        listview.setAdapter(adapter);
 
     }
 }
