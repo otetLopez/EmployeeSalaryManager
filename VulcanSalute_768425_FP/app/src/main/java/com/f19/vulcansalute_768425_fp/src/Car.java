@@ -2,7 +2,7 @@ package com.f19.vulcansalute_768425_fp.src;
 
 import androidx.annotation.NonNull;
 
-public class Car extends Vehicle {
+public class Car extends Vehicle implements java.io.Serializable {
     private String type;
 
     public Car(String make, String plate, String color, String type) {

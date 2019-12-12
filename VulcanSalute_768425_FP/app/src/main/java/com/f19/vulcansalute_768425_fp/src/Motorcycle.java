@@ -2,7 +2,7 @@ package com.f19.vulcansalute_768425_fp.src;
 
 import androidx.annotation.NonNull;
 
-public class Motorcycle extends Vehicle {
+public class Motorcycle extends Vehicle implements java.io.Serializable {
     private boolean isSideCar;
 
     public Motorcycle(String make, String plate, String color, boolean isSideCar) {
