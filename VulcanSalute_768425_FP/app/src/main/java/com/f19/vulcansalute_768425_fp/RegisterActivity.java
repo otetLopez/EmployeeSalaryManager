@@ -16,7 +16,11 @@ import android.widget.Toast;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 import com.f19.vulcansalute_768425_fp.src.Car;
+import com.f19.vulcansalute_768425_fp.src.Employee;
+import com.f19.vulcansalute_768425_fp.src.Manager;
 import com.f19.vulcansalute_768425_fp.src.Motorcycle;
+import com.f19.vulcansalute_768425_fp.src.Programmer;
+import com.f19.vulcansalute_768425_fp.src.Tester;
 import com.f19.vulcansalute_768425_fp.src.Vehicle;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -141,10 +145,41 @@ public class RegisterActivity extends AppCompatActivity {
                     Vehicle v = (vehicleType == Constants.VEHICLE_TYPE_CAR) ?
                             new Car(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], ctypetxt.getText().toString()) :
                             new Motorcycle(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], sidecar);
+
+                    Employee employee = null;
+                    switch (employeeType) {
+                        case Constants.EMPLOYMENT_CODE_MANAGER:
+                        {
+                            //Manager manager
+                            employee = new Manager(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                                    Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
+                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()));
+                        }
+                        break;
+                        case Constants.EMPLOYMENT_CODE_TESTER:
+                        {
+                            //Tester tester
+                            employee = new Tester(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                                    Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
+                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()));
+                        }
+                        break;
+                        case Constants.EMPLOYMENT_CODE_PROGRAMMER:
+                        {
+                            //Programmer programmer
+                            employee= new Programmer(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                                    Integer.valueOf(byeartxt.getText().toString()), Double.valueOf(salarytxt.getText().toString()),
+                                    Double.valueOf(oratetxt.getText().toString()), v, Integer.valueOf(nbtxt.getText().toString()));
+                        }
+                        break;
+                        default:
+                            Toast.makeText(RegisterActivity.this, "ERROR: Employee record not created.  Employment type invalid.", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                    if(employee != null) {
+
+                    }
                 }
-
-
-
             }
         });
     }
