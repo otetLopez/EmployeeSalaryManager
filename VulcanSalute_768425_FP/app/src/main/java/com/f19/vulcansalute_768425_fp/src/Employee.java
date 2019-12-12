@@ -9,15 +9,17 @@ import com.f19.vulcansalute_768425_fp.constants.Constants;
  employee Id. The employee has also a vehicle */
 
 public class Employee {
-    private String name;
+    private String fname;
+    private String lname;
     private int birthYear;
     private int age;
     private double mIncome;
     private double oRate;
     private Vehicle vehicle;
 
-    public Employee(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
-        this.name = name;
+    public Employee(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
+        this.fname = fname;
+        this.lname = lname;
         this.birthYear = birthYear;
         this.mIncome = mIncome;
         this.oRate = oRate;
@@ -26,15 +28,7 @@ public class Employee {
         this.age = Constants.CURRENT_YEAR - birthYear;
     }
 
-    public Employee(String name, int birthYear, double mIncome, double oRate) {
-        this.name = name;
-        this.birthYear = birthYear;
-        this.mIncome = mIncome;
-        this.oRate = validateRate(oRate);
 
-        this.age = Constants.CURRENT_YEAR - birthYear;
-        this.vehicle = null;
-    }
 
     /** Each employee has a base yearly income computed as 12 times the monthly
      income multiplied by the occupation rate. */
@@ -42,12 +36,20 @@ public class Employee {
         return this.mIncome * Constants.PAID_MONTHS_IN_A_YEAR * (this.oRate * Constants.PERCENTAGE);
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public int getBirthYear() {

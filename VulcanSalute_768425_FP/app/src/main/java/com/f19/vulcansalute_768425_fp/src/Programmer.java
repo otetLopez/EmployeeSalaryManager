@@ -7,24 +7,9 @@ import androidx.annotation.NonNull;
 public class Programmer extends Employee {
     private int nbProjects;
 
-    public Programmer(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbProjects) {
-        super(name, birthYear, mIncome, oRate, vehicle);
+    public Programmer(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbProjects) {
+        super(fname, lname, birthYear, mIncome, oRate, vehicle);
         this.nbProjects = nbProjects;
-    }
-
-    public Programmer(String name, int birthYear, double mIncome, double oRate, int nbProjects) {
-        super(name, birthYear, mIncome, oRate);
-        this.nbProjects = nbProjects;
-    }
-
-    public Programmer(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle) {
-        super(name, birthYear, mIncome, oRate, vehicle);
-        this.nbProjects = 0;
-    }
-
-    public Programmer(String name, int birthYear, double mIncome, double oRate) {
-        super(name, birthYear, mIncome, oRate);
-        this.nbProjects = 0;
     }
 
     /** For a programmer, a bonus of 200 dollars per completed project */
@@ -37,7 +22,7 @@ public class Programmer extends Employee {
     @NonNull
     @Override
     public String toString() {
-        return "Name: " + this.getName() + ", a Programmer\n" +
+        return "Name: " + this.getFname() + " " + this.getLname() + ", a Programmer\n" +
                 "Age: " + this.getAge() + "\n" +
                 (getVehicle() != null ? (this.getVehicle().toString() + "\n") : "" ) +
                 "Occupation Rate: " + this.getoRate() + "%\n" +

@@ -6,19 +6,11 @@ public class Manager extends Employee {
     private int nbClients;
     private int nbTravelDays;
 
-    public Manager(String name, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbClients) {
-        super(name, birthYear, mIncome, oRate, vehicle);
+    public Manager(String fname, String lname, int birthYear, double mIncome, double oRate, Vehicle vehicle, int nbClients) {
+        super(fname, lname, birthYear, mIncome, oRate, vehicle);
         this.nbClients = nbClients;
         this.nbTravelDays = 0;
     }
-
-    public Manager(String name, int birthYear, double mIncome, double oRate, int nbClients) {
-        super(name, birthYear, mIncome, oRate);
-        this.nbClients = nbClients;
-        this.nbTravelDays = 0;
-    }
-
-
 
     /** For a manager a bonus of 500 dollars per client brought to the company is added as well
      as 100 dollars per day for the expenditure of the travelled days. (you can define two
@@ -32,7 +24,7 @@ public class Manager extends Employee {
 
     @Override
     public String toString() {
-        return  "Name: " + this.getName() + ", a Manager\n" +
+        return  "Name: " + this.getFname() + " " + this.getLname() + ", a Manager\n" +
                 "Age: " + this.getAge() + "\n" +
                 (getVehicle() != null ? (this.getVehicle().toString() + "\n") : "" ) +
                 "Occupation Rate: " + this.getoRate() + "%\n" +
