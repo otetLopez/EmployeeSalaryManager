@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 import com.f19.vulcansalute_768425_fp.src.Car;
@@ -110,9 +111,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 //                    default:
 //                        break;
 //                }
-                employees.add((Employee) data.getExtras().get("newEmployee"));
+                Employee employee = (Employee) data.getExtras().get("newEmployee");
+                if(isIDValid(employee.getId()))
+                    employees.add((Employee) data.getExtras().get("newEmployee"));
+                else
+                    Toast.makeText(MainActivity.this, "ID you used is already registered.  Please try again", Toast.LENGTH_SHORT).show();
             }
-
         }
         updateList(Constants.NO_SEARCH_FILTER);
     }
@@ -138,6 +142,26 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         listview.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        updateList(s);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        updateList(s);
+        return false;
+    }
+
+    private boolean isIDValid(String id) {
+        for(int i=0; i<employees.size(); ++i) {
+            if(employees.get(i).getId().toLowerCase().equals(id.toLowerCase()))
+                return false;
+        }
+        return true;
+    }
+
     private void add_test_data() {
         Car v1 = new Car("Lamborghini", "Custom Plate", "White", "Sport");
         Car v2 = new Car("BMW", "Custome Plate", "Black", "Sedan");
@@ -152,17 +176,5 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         employees.add(paul);
         Tester pierre = new Tester("Pierre", "D", "e4",1987, 5456, 50, v4, 124);
         employees.add(pierre);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-        updateList(s);
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String s) {
-        updateList(s);
-        return false;
     }
 }
