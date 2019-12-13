@@ -13,8 +13,10 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
+import com.f19.vulcansalute_768425_fp.src.Car;
 import com.f19.vulcansalute_768425_fp.src.Employee;
 import com.f19.vulcansalute_768425_fp.src.Manager;
+import com.f19.vulcansalute_768425_fp.src.Motorcycle;
 import com.f19.vulcansalute_768425_fp.src.Programmer;
 import com.f19.vulcansalute_768425_fp.src.Simulator;
 import com.f19.vulcansalute_768425_fp.src.Tester;
@@ -35,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
             Simulator simulator = new Simulator();
             simulator.run();
         }
+        if(Constants.DEBUG_ADD_INITIAL_DATA) {
+            /** Add initial data for testing */
+            add_test_data();
+        }
+        updateList();
 
         ListView listview = findViewById(R.id.list_names);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -103,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+        updateList();
+    }
+
+    private void updateList() {
         ArrayList<String> names = new ArrayList<>();
         Log.i("received", "Total employees size: " + employees.size());
         for(int i=0; i<employees.size(); ++i) {
@@ -111,6 +122,21 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
         ListView listview  = findViewById(R.id.list_names);
         listview.setAdapter(adapter);
+    }
 
+    private void add_test_data() {
+        Car v1 = new Car("Lamborghini", "Custom Plate", "White", "Sport");
+        Car v2 = new Car("BMW", "Custome Plate", "Black", "Sedan");
+        Motorcycle v3 = new Motorcycle("Kawasaki", "Custome Plate", "Yellow", false);
+        Motorcycle v4 = new Motorcycle("Honda", "Custome Plate", "Black", true);
+
+        Manager serge = new Manager("Serge", "E","e1", 1985, 7456.0, 100, v1, 30);
+        employees.add(serge);
+        Manager cindy = new Manager("Cindy", "E", "e2", 1974, 8240, 80, v2, 20);
+        employees.add(cindy);
+        Programmer paul = new Programmer("Paul", "Z", "e3",1993, 6456, 75, v3, 3);
+        employees.add(paul);
+        Tester pierre = new Tester("Pierre", "D", "e4",1987, 5456, 50, v4, 124);
+        employees.add(pierre);
     }
 }
