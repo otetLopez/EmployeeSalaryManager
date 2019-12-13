@@ -1,5 +1,6 @@
 package com.f19.vulcansalute_768425_fp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.f19.vulcansalute_768425_fp.constants.Constants;
+import com.f19.vulcansalute_768425_fp.src.Employee;
 import com.f19.vulcansalute_768425_fp.src.ListObject;
 
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.MyViewHolder> implements AdapterView.OnItemClickListener {
     private ArrayList<ListObject> mDataset;
+    private ArrayList<Employee> employees;
 
     AdapterView.OnItemClickListener itemClickListener;
     int position = -1;
@@ -50,8 +54,9 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ObjectListAdapter(ArrayList<ListObject> myDataset, AdapterView.OnItemClickListener itemClickListener) {
-        mDataset = myDataset;
+    public ObjectListAdapter(ArrayList<Employee> employees, ArrayList<ListObject> myDataset, AdapterView.OnItemClickListener itemClickListener) {
+        this.mDataset = myDataset;
+        this.employees = employees;
         this.itemClickListener = itemClickListener;
     }
 
@@ -71,8 +76,11 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
                 position = getAdapterPosition(vh.name.getText().toString());
                 //itemClickListener.onItemClick(itemClickListener, view, position, 0);
                 //itemClickListener.onItemClick(view, getAdapterPosition(vh.name.getText().toString()));
-                Intent intent = new Intent(view.getContext(), RegisterActivity.class);
-                view.getContext().startActivity(intent);
+                Context context = view.getContext();
+                Intent intent = new Intent(context, EmployeeDetailsActivity.class);
+                intent.putExtra("details", employees.get(position));
+                context.startActivity(intent);
+                //view.getContext().startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_DISPLAY);
             }
         });
         return vh;

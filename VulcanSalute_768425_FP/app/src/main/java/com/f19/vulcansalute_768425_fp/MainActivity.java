@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         // specify an adapter (see also next example)
         AdapterView.OnItemClickListener itemClickListener = null;
-        mAdapter = new ObjectListAdapter(names, itemClickListener);
+        mAdapter = new ObjectListAdapter(employees, names, itemClickListener);
         recyclerView.setAdapter(mAdapter);
 
         /**
