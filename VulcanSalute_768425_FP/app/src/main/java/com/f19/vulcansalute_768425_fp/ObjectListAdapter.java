@@ -1,5 +1,6 @@
 package com.f19.vulcansalute_768425_fp;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.MyViewHolder> implements AdapterView.OnItemClickListener {
     private ArrayList<ListObject> mDataset;
 
+    AdapterView.OnItemClickListener itemClickListener;
+    int position = -1;
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -34,6 +37,7 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name);
             id = (TextView) itemView.findViewById(R.id.id);
+            //itemView.setOnClickListener(itemClickListener);
         }
 
         void bindData(ListObject listObject) {
@@ -46,8 +50,9 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ObjectListAdapter(ArrayList<ListObject> myDataset) {
+    public ObjectListAdapter(ArrayList<ListObject> myDataset, AdapterView.OnItemClickListener itemClickListener) {
         mDataset = myDataset;
+        this.itemClickListener = itemClickListener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -62,7 +67,12 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
         vh.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("Click", "Clicked on item " + vh.name.getText().toString());
+                Log.i("Click", "Clicked on item " + vh.name.getText().toString() + " at pos " + getAdapterPosition(vh.name.getText().toString()));
+                position = getAdapterPosition(vh.name.getText().toString());
+                //itemClickListener.onItemClick(itemClickListener, view, position, 0);
+                //itemClickListener.onItemClick(view, getAdapterPosition(vh.name.getText().toString()));
+                Intent intent = new Intent(view.getContext(), RegisterActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
         return vh;
@@ -78,6 +88,14 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
     @Override
     public int getItemCount() {
         return mDataset.size();
+    }
+
+    public int getAdapterPosition (String title) {
+        for(int i = 0; i< mDataset.size(); ++i) {
+            if(mDataset.get(i).title.equals(title))
+                return i;
+        }
+        return -1;
     }
 }
 

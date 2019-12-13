@@ -3,6 +3,7 @@ package com.f19.vulcansalute_768425_fp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    View v;
 
     ArrayList<Employee> employees = new ArrayList<>();
 
@@ -172,7 +175,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         // specify an adapter (see also next example)
-        mAdapter = new ObjectListAdapter(names);
+        AdapterView.OnItemClickListener itemClickListener = null;
+        mAdapter = new ObjectListAdapter(names, itemClickListener);
         recyclerView.setAdapter(mAdapter);
 
         /**
