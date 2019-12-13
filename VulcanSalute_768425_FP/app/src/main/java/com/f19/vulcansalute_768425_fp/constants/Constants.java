@@ -9,6 +9,7 @@ public class Constants {
     public static final int PAID_MONTHS_IN_A_YEAR = 12;
     public static final double PERCENTAGE = 0.01;
     public static final int CURRENT_YEAR = 2019;
+    public static final String NO_SEARCH_FILTER = "";
 
     public static final String[] EmployeeType = {"Choose a type", "Manager", "Tester", "Programmer"};
     public static final String[] GainFactor = {"# clients", "# bugs", "# projects"};

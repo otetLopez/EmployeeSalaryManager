@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 import com.f19.vulcansalute_768425_fp.src.Car;
@@ -23,7 +24,7 @@ import com.f19.vulcansalute_768425_fp.src.Tester;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     ArrayList<Employee> employees = new ArrayList<>();
 
@@ -41,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
             /** Add initial data for testing */
             add_test_data();
         }
-        updateList();
+        updateList(Constants.NO_SEARCH_FILTER);
+
+        SearchView search = findViewById(R.id.search);
+        search.setOnQueryTextListener(this);
 
         ListView listview = findViewById(R.id.list_names);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -110,16 +114,26 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        updateList();
+        updateList(Constants.NO_SEARCH_FILTER);
     }
 
-    private void updateList() {
+    private void updateList(String filter) {
         ArrayList<String> names = new ArrayList<>();
         Log.i("received", "Total employees size: " + employees.size());
         for(int i=0; i<employees.size(); ++i) {
-            names.add(employees.get(i).getFname() + " " + employees.get(i).getLname());
+            String name = employees.get(i).getFname() + " " + employees.get(i).getLname();
+            if(!filter.isEmpty()) {
+                if (name.toLowerCase().contains(filter.toLowerCase()))
+                    names.add(name);
+            } else
+                names.add(name);
         }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
+
+
+
+
         ListView listview  = findViewById(R.id.list_names);
         listview.setAdapter(adapter);
     }
@@ -138,5 +152,17 @@ public class MainActivity extends AppCompatActivity {
         employees.add(paul);
         Tester pierre = new Tester("Pierre", "D", "e4",1987, 5456, 50, v4, 124);
         employees.add(pierre);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        updateList(s);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        updateList(s);
+        return false;
     }
 }
