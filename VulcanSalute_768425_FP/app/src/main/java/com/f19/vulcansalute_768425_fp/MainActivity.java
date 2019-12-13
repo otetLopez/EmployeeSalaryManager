@@ -1,22 +1,16 @@
 package com.f19.vulcansalute_768425_fp;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.f19.vulcansalute_768425_fp.constants.Constants;
 import com.f19.vulcansalute_768425_fp.src.Car;
 import com.f19.vulcansalute_768425_fp.src.Employee;
+import com.f19.vulcansalute_768425_fp.src.ListObject;
 import com.f19.vulcansalute_768425_fp.src.Manager;
 import com.f19.vulcansalute_768425_fp.src.Motorcycle;
 import com.f19.vulcansalute_768425_fp.src.Programmer;
@@ -25,7 +19,16 @@ import com.f19.vulcansalute_768425_fp.src.Tester;
 
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     ArrayList<Employee> employees = new ArrayList<>();
 
@@ -43,11 +46,26 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             /** Add initial data for testing */
             add_test_data();
         }
+
+        /** Setup RecyclerView */
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        /** Update display list */
         updateList(Constants.NO_SEARCH_FILTER);
 
+        /** Setup search bar */
         SearchView search = findViewById(R.id.search);
         search.setOnQueryTextListener(this);
 
+        /** This is a listview implemented before list is changed to RecyclerView
         ListView listview = findViewById(R.id.list_names);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -69,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_DISPLAY);
             }
         });
+         */
 
         Button btn = findViewById(R.id.btn_add);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
     private void updateList(String filter) {
+        /**
         ArrayList<String> names = new ArrayList<>();
         Log.i("received", "Total employees size: " + employees.size());
         for(int i=0; i<employees.size(); ++i) {
@@ -133,13 +153,29 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 names.add(name);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
+         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
+         Listview implemented before changing to RecyclerView
+         ListView listview  = findViewById(R.id.list_names);
+         listview.setAdapter(adapter);
+        */
 
+        ArrayList<ListObject> names = new ArrayList<>();
+        for(int i=0; i<employees.size(); ++i) {
+            String name = employees.get(i).getFname() + " " + employees.get(i).getLname();
+            ListObject listObject = new ListObject("Name\t\t: " + name, "ID\t\t: " + employees.get(i).getId());
+            if(!filter.isEmpty()) {
+                if (name.toLowerCase().contains(filter.toLowerCase()))
+                    names.add(listObject);
+            } else
+                names.add(listObject);
+        }
 
+        // specify an adapter (see also next example)
+        mAdapter = new ObjectListAdapter(names);
+        recyclerView.setAdapter(mAdapter);
 
-
-        ListView listview  = findViewById(R.id.list_names);
-        listview.setAdapter(adapter);
+        /**
+         */
     }
 
     @Override
