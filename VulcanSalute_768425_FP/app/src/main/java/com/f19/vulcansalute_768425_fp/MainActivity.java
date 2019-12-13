@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        //recyclerView.setOnClickListener(new );
 
         /** Update display list */
         updateList(Constants.NO_SEARCH_FILTER);

@@ -1,8 +1,10 @@
 package com.f19.vulcansalute_768425_fp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,8 +14,13 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.MyViewHolder> {
+public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.MyViewHolder> implements AdapterView.OnItemClickListener {
     private ArrayList<ListObject> mDataset;
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -51,7 +58,13 @@ public class ObjectListAdapter extends RecyclerView.Adapter<ObjectListAdapter.My
         View  v = (View) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view, parent, false);
 
-        MyViewHolder vh = new MyViewHolder(v);
+        final MyViewHolder vh = new MyViewHolder(v);
+        vh.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("Click", "Clicked on item " + vh.name.getText().toString());
+            }
+        });
         return vh;
     }
 
