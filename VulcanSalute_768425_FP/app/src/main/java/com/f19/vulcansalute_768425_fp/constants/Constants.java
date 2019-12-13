@@ -30,6 +30,8 @@ public class Constants {
 
     /** Intent Codes */
     public static final int INTENT_REQUEST_CODE_ADD_OK = 1;
+    public static final int INTENT_REQUEST_CODE_DISPLAY = 2;
+
 
     /** Income Bonuses */
     public static final int GAIN_FACTOR_ERROR = 10;

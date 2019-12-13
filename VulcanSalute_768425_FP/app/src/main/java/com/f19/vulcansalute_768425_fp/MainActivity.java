@@ -41,6 +41,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                int index = -1;
+                for(int x = 0; x<employees.size(); ++x) {
+                    if(adapterView.getItemAtPosition(i).equals(employees.get(x).getFname() + " " + employees.get(x).getLname())) {
+                        Log.i("Display", "Indeces are " + i + " and " + x);
+                        index = x;
+                        break;
+                    }
+                }
+
+                Employee person = employees.get(index);
+                Log.i("Display", person.getFname() + " " + person.getLname());
+                Intent intent = new Intent(MainActivity.this, EmployeeDetailsActivity.class);
+                intent.putExtra("details", person);
+                startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_DISPLAY);
             }
         });
 
