@@ -164,19 +164,22 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         */
 
         ArrayList<ListObject> names = new ArrayList<>();
+        ArrayList<Employee> filteredEmployees = new ArrayList<>();
         for(int i=0; i<employees.size(); ++i) {
             String name = employees.get(i).getFname() + " " + employees.get(i).getLname();
             ListObject listObject = new ListObject("Name\t\t: " + name, "ID\t\t: " + employees.get(i).getId());
             if(!filter.isEmpty()) {
-                if (name.toLowerCase().contains(filter.toLowerCase()))
+                if (name.toLowerCase().contains(filter.toLowerCase())) {
                     names.add(listObject);
+                    filteredEmployees.add(employees.get(i));
+                }
             } else
                 names.add(listObject);
         }
 
         // specify an adapter (see also next example)
         AdapterView.OnItemClickListener itemClickListener = null;
-        mAdapter = new ObjectListAdapter(employees, names, itemClickListener);
+        mAdapter = new ObjectListAdapter(filteredEmployees, names, itemClickListener);
         recyclerView.setAdapter(mAdapter);
 
         /**
