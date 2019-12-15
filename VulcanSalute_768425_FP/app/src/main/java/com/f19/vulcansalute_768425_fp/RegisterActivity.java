@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,6 +25,8 @@ import com.f19.vulcansalute_768425_fp.src.Programmer;
 import com.f19.vulcansalute_768425_fp.src.Tester;
 import com.f19.vulcansalute_768425_fp.src.Vehicle;
 
+import java.util.ArrayList;
+
 public class RegisterActivity extends AppCompatActivity {
 
 
@@ -35,15 +38,23 @@ public class RegisterActivity extends AppCompatActivity {
     boolean missingflds;
     short vehicleType;
     boolean sidecar;
+    boolean sidecarFlag;
     short employeeType;
     short vehicleColor;
 
+
+    ArrayList<String> uniqueID = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Intent intent = getIntent();
+        uniqueID = intent.getExtras().getStringArrayList("uniqueID");
+
+
+        sidecarFlag = Constants.BOOLEAN_FIELD_NOT_SET;
         nbRow = findViewById(R.id.tbrow_nb);
         carTypeRow = findViewById(R.id.tbrow_cartype);
         sideCarRow = findViewById(R.id.tbrow_sidecar);
@@ -129,7 +140,7 @@ public class RegisterActivity extends AppCompatActivity {
                             message += message.isEmpty() ? "Car Type" : ", Car Type";
                     }
                     else if(vehicleType == Constants.VEHICLE_TYPE_MOTORCYCLE) {
-                        if(sidecar == Constants.BOOLEAN_FIELD_NOT_SET)
+                        if(sidecarFlag == Constants.BOOLEAN_FIELD_NOT_SET)
                             message += message.isEmpty() ? "Side Car" : ", Side Car";
                     }
                 }
@@ -147,49 +158,53 @@ public class RegisterActivity extends AppCompatActivity {
                     if (Integer.valueOf(byeartxt.getText().toString()) < 1900)
                         Toast.makeText(RegisterActivity.this, "Your Birth Year is invalid.  Please make sure you were born after 1900s", Toast.LENGTH_SHORT).show();
                     else {
-                        Vehicle v = (vehicleType == Constants.VEHICLE_TYPE_CAR) ?
-                                new Car(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], ctypetxt.getText().toString()) :
-                                new Motorcycle(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], sidecar);
+                        if (!(isIDValid(idtxt.getText().toString())))
+                            Toast.makeText(RegisterActivity.this, "Invalid ID.  ID inputted already in use.  Please try again.", Toast.LENGTH_SHORT).show();
+                        else {
+                            Vehicle v = (vehicleType == Constants.VEHICLE_TYPE_CAR) ?
+                                    new Car(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], ctypetxt.getText().toString()) :
+                                    new Motorcycle(modeltxt.getText().toString(), pnumbertxt.getText().toString(), Constants.Colors[vehicleColor], sidecar);
 
-                        //Employee employee = null;
-                        Intent returnIntent = new Intent();
-                        switch (employeeType) {
-                            case Constants.EMPLOYMENT_CODE_MANAGER: {
-                                Manager manager = new Manager(fnametxt.getText().toString(), lnametxt.getText().toString(),
-                                        idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
-                                        Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
-                                        v, Integer.valueOf(nbtxt.getText().toString()));
-                                returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_MANAGER);
-                                returnIntent.putExtra("newEmployee", manager);
-                                setResult(MainActivity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-                            break;
-                            case Constants.EMPLOYMENT_CODE_TESTER: {
-                                Tester tester = new Tester(fnametxt.getText().toString(), lnametxt.getText().toString(),
-                                        idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
-                                        Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
-                                        v, Integer.valueOf(nbtxt.getText().toString()));
-                                returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_TESTER);
-                                returnIntent.putExtra("newEmployee", tester);
-                                setResult(MainActivity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-                            break;
-                            case Constants.EMPLOYMENT_CODE_PROGRAMMER: {
-                                Programmer programmer = new Programmer(fnametxt.getText().toString(), lnametxt.getText().toString(),
-                                        idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
-                                        Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
-                                        v, Integer.valueOf(nbtxt.getText().toString()));
-                                returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_PROGRAMMER);
-                                returnIntent.putExtra("newEmployee", programmer);
-                                setResult(MainActivity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-                            break;
-                            default:
-                                Toast.makeText(RegisterActivity.this, "ERROR: Employee record not created.  Employment type invalid.", Toast.LENGTH_SHORT).show();
+                            //Employee employee = null;
+                            Intent returnIntent = new Intent();
+                            switch (employeeType) {
+                                case Constants.EMPLOYMENT_CODE_MANAGER: {
+                                    Manager manager = new Manager(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                                            idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
+                                            Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
+                                            v, Integer.valueOf(nbtxt.getText().toString()));
+                                    returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_MANAGER);
+                                    returnIntent.putExtra("newEmployee", manager);
+                                    setResult(MainActivity.RESULT_OK, returnIntent);
+                                    finish();
+                                }
                                 break;
+                                case Constants.EMPLOYMENT_CODE_TESTER: {
+                                    Tester tester = new Tester(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                                            idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
+                                            Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
+                                            v, Integer.valueOf(nbtxt.getText().toString()));
+                                    returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_TESTER);
+                                    returnIntent.putExtra("newEmployee", tester);
+                                    setResult(MainActivity.RESULT_OK, returnIntent);
+                                    finish();
+                                }
+                                break;
+                                case Constants.EMPLOYMENT_CODE_PROGRAMMER: {
+                                    Programmer programmer = new Programmer(fnametxt.getText().toString(), lnametxt.getText().toString(),
+                                            idtxt.getText().toString(), Integer.valueOf(byeartxt.getText().toString()),
+                                            Double.valueOf(salarytxt.getText().toString()), Double.valueOf(oratetxt.getText().toString()),
+                                            v, Integer.valueOf(nbtxt.getText().toString()));
+                                    returnIntent.putExtra("employeeType", Constants.EMPLOYMENT_CODE_PROGRAMMER);
+                                    returnIntent.putExtra("newEmployee", programmer);
+                                    setResult(MainActivity.RESULT_OK, returnIntent);
+                                    finish();
+                                }
+                                break;
+                                default:
+                                    Toast.makeText(RegisterActivity.this, "ERROR: Employee record not created.  Employment type invalid.", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
                         }
                     }
                 }
@@ -250,15 +265,26 @@ public class RegisterActivity extends AppCompatActivity {
         switch (id) {
             case R.id.radio_wscar: {
                 sidecar = Constants.MOTORCYCLE_W_SIDECAR;
+                sidecarFlag = Constants.BOOLEAN_FIELD_SET;
             }
             break;
             case R.id.radio_woutscar: {
                 sidecar = Constants.MOTORCYCLE_WOUT_SIDECAR;
+                sidecarFlag = Constants.BOOLEAN_FIELD_SET;
             }
             break;
             default:
                 sidecar = Constants.BOOLEAN_FIELD_NOT_SET;
+                sidecarFlag = Constants.BOOLEAN_FIELD_NOT_SET;
                 break;
         }
+    }
+
+    private boolean isIDValid(String id) {
+        for(int i=0; i<uniqueID.size(); ++i) {
+            if(uniqueID.get(i).toLowerCase().equals(id.toLowerCase()))
+                return false;
+        }
+        return true;
     }
 }

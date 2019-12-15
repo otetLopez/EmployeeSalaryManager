@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     View v;
 
     ArrayList<Employee> employees = new ArrayList<>();
+    ArrayList<String> uniqueID = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,35 +70,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         SearchView search = findViewById(R.id.search);
         search.setOnQueryTextListener(this);
 
-        /** This is a listview implemented before list is changed to RecyclerView
-        ListView listview = findViewById(R.id.list_names);
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                int index = -1;
-                for(int x = 0; x<employees.size(); ++x) {
-                    if(adapterView.getItemAtPosition(i).equals(employees.get(x).getFname() + " " + employees.get(x).getLname())) {
-                        Log.i("Display", "Indeces are " + i + " and " + x);
-                        index = x;
-                        break;
-                    }
-                }
-
-                Employee person = employees.get(index);
-                Log.i("Display", person.getFname() + " " + person.getLname());
-                Intent intent = new Intent(MainActivity.this, EmployeeDetailsActivity.class);
-                intent.putExtra("details", person);
-                startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_DISPLAY);
-            }
-        });
-         */
-
         Button btn = findViewById(R.id.btn_add);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                intent.putExtra("uniqueID", uniqueID);
                 startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_OK);
             }
         });
@@ -108,60 +86,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == Constants.INTENT_REQUEST_CODE_ADD_OK) {
             if(resultCode == RESULT_OK) {
-//                int employeeType = (Integer) data.getExtras().getInt("employeeType");
-//                switch (employeeType) {
-//                    case Constants.EMPLOYMENT_CODE_MANAGER:
-//                    {
-//                        Manager manager = (Manager) data.getExtras().get("newEmployee");
-//                        Log.i("received", manager.toString());
-//                        employees.add(manager);
-//                    }
-//                    break;
-//                    case Constants.EMPLOYMENT_CODE_TESTER:
-//                    {
-//                        Tester tester = (Tester) data.getExtras().get("newEmployee");
-//                        Log.i("received", tester.toString());
-//                        employees.add(tester);
-//                    }
-//                    break;
-//                    case Constants.EMPLOYMENT_CODE_PROGRAMMER:
-//                    {
-//                        Programmer programer = (Programmer) data.getExtras().get("newEmployee");
-//                        Log.i("received", programer.toString());
-//                        employees.add(programer);
-//                    }
-//                    break;
-//                    default:
-//                        break;
-//                }
                 Employee employee = (Employee) data.getExtras().get("newEmployee");
-                if(isIDValid(employee.getId()))
+                //if(isIDValid(employee.getId())) {
                     employees.add((Employee) data.getExtras().get("newEmployee"));
-                else
-                    Toast.makeText(MainActivity.this, "ID you used is already registered.  Please try again", Toast.LENGTH_SHORT).show();
+                    uniqueID.add(employee.getId());
+                //}
+                //else
+                //    Toast.makeText(MainActivity.this, "ID you used is already registered.  Please try again", Toast.LENGTH_SHORT).show();
             }
         }
         updateList(Constants.NO_SEARCH_FILTER);
     }
 
     private void updateList(String filter) {
-        /**
-        ArrayList<String> names = new ArrayList<>();
-        Log.i("received", "Total employees size: " + employees.size());
-        for(int i=0; i<employees.size(); ++i) {
-            String name = employees.get(i).getFname() + " " + employees.get(i).getLname();
-            if(!filter.isEmpty()) {
-                if (name.toLowerCase().contains(filter.toLowerCase()))
-                    names.add(name);
-            } else
-                names.add(name);
-        }
-
-         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
-         Listview implemented before changing to RecyclerView
-         ListView listview  = findViewById(R.id.list_names);
-         listview.setAdapter(adapter);
-        */
 
         ArrayList<ListObject> names = new ArrayList<>();
         ArrayList<Employee> filteredEmployees = new ArrayList<>();
@@ -173,8 +110,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     names.add(listObject);
                     filteredEmployees.add(employees.get(i));
                 }
-            } else
+            } else {
                 names.add(listObject);
+                filteredEmployees.add(employees.get(i));
+            }
         }
 
         // specify an adapter (see also next example)
@@ -182,8 +121,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mAdapter = new ObjectListAdapter(filteredEmployees, names, itemClickListener);
         recyclerView.setAdapter(mAdapter);
 
-        /**
-         */
     }
 
     @Override
@@ -214,11 +151,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         Manager serge = new Manager("Serge", "E","e1", 1985, 7456.0, 100, v1, 30);
         employees.add(serge);
+        uniqueID.add("e1");
         Manager cindy = new Manager("Cindy", "E", "e2", 1974, 8240, 80, v2, 20);
         employees.add(cindy);
+        uniqueID.add("e2");
         Programmer paul = new Programmer("Paul", "Z", "e3",1993, 6456, 75, v3, 3);
         employees.add(paul);
+        uniqueID.add("e3");
         Tester pierre = new Tester("Pierre", "D", "e4",1987, 5456, 50, v4, 124);
         employees.add(pierre);
+        uniqueID.add("e4");
     }
 }

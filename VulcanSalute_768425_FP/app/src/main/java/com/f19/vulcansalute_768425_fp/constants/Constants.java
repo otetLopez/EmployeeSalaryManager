@@ -3,7 +3,7 @@ package com.f19.vulcansalute_768425_fp.constants;
 public class Constants {
 
     public static final boolean ENABLE_DEBUG = false;
-    public static final boolean DEBUG_ADD_INITIAL_DATA = true;
+    public static final boolean DEBUG_ADD_INITIAL_DATA = false;
 
     /** Other constants */
     public static final int PAID_MONTHS_IN_A_YEAR = 12;
@@ -17,7 +17,9 @@ public class Constants {
 
 
     public static final int FIELD_NOT_SET = -1;
+    public static final int FIELD_SET = 0;
     public static final boolean BOOLEAN_FIELD_NOT_SET = false;
+    public static final boolean BOOLEAN_FIELD_SET = true;
 
 
     public static final int EMPLOYMENT_CODE_MANAGER = 1;
